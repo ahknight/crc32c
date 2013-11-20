@@ -2,7 +2,7 @@
 #include <cstdio>
 
 #include "logging/crc32c.h"
-#include "logging/cycletimer.h"
+#include "bench/cycletimer.h"
 
 using namespace logging;
 

@@ -6,7 +6,7 @@
 #include <cstdio>
 
 #include "logging/crc32c.h"
-#include "stupidunit/stupidunit.h"
+#include "test/stupidunit.h"
 
 using namespace logging;
 

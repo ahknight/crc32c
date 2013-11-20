@@ -1,15 +1,15 @@
-WARNING_FLAGS=-Wall -Wextra -Wno-sign-compare 
-OPT_FLAGS=-O3 -DNDEBUG
-CXXFLAGS=-msse4.2 $(WARNING_FLAGS) $(OPT_FLAGS)
+CXXFLAGS = -O3 -DNDEBUG -msse4.2 -I. -Wall -Wextra -Wno-sign-compare
+CC = c++
 
-# Makes the linker g++
-CC=g++
+PRODUCTS=crc32c_test crc32c_bench
 
-BINARIES=crc32c_test crc32cbench
-all: $(BINARIES)
+all: $(PRODUCTS)
 
-crc32c_test: crc32c_test.o crc32ctables.o crc32c.o stupidunit.o
-crc32cbench: crc32cbench.o crc32ctables.o crc32c.o
+crc32c_test: test/crc32c_test.o test/stupidunit.o logging/crc32ctables.o logging/crc32c.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+crc32c_bench: bench/crc32cbench.o logging/crc32ctables.o logging/crc32c.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
-	$(RM) $(BINARIES) *.o
+	$(RM) $(PRODUCTS) */*.o
