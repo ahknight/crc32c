@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		9BA332AE183C608400F55322 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		9BA332B0183C6EB700F55322 /* crc32c */ = {isa = PBXFileReference; lastKnownFileType = folder; path = crc32c; sourceTree = "<group>"; };
 		9BFF0B85183C3C3D0001601C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		9BFF0B89183C4A700001601C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9BFF0B8B183C4CC30001601C /* bench */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bench; sourceTree = "<group>"; };
@@ -18,8 +20,10 @@
 		9BFF0B70183C380C0001601C = {
 			isa = PBXGroup;
 			children = (
+				9BA332AE183C608400F55322 /* main.c */,
 				9BFF0B89183C4A700001601C /* LICENSE */,
 				9BFF0B85183C3C3D0001601C /* Makefile */,
+				9BA332B0183C6EB700F55322 /* crc32c */,
 				9BFF0B8B183C4CC30001601C /* bench */,
 				9BFF0B8C183C4CC30001601C /* logging */,
 				9BFF0B8D183C4CC30001601C /* test */,

@@ -5,10 +5,18 @@
 #ifndef LOGGING_CRC32C_H__
 #define LOGGING_CRC32C_H__
 
+#if defined(__cplusplus)
 #include <cstddef>
-#include <stdint.h>
+#else
+#include <stdlib.h>
+#endif
 
+#include <stdint.h>
+#include "crc32c_tables.h"
+
+#if defined(__cplusplus)
 namespace logging {
+#endif
 
 /** Returns the initial value for a CRC32-C computation. */
 static inline uint32_t crc32cInit() {
@@ -38,5 +46,8 @@ uint32_t crc32cSlicingBy8(uint32_t crc, const void* data, size_t length);
 uint32_t crc32cHardware32(uint32_t crc, const void* data, size_t length);
 uint32_t crc32cHardware64(uint32_t crc, const void* data, size_t length);
 
+#if defined(__cplusplus)
 }  // namespace logging
+#endif
+
 #endif

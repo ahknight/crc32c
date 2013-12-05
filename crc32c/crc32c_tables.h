@@ -7,8 +7,10 @@
 
 #include <stdint.h>
 
+#if defined(__cplusplus)
 namespace logging {
-
+#endif
+    
 extern const uint32_t crc_tableil8_o32[256];
 extern const uint32_t crc_tableil8_o40[256];
 extern const uint32_t crc_tableil8_o48[256];
@@ -18,5 +20,8 @@ extern const uint32_t crc_tableil8_o72[256];
 extern const uint32_t crc_tableil8_o80[256];
 extern const uint32_t crc_tableil8_o88[256];
 
+#if defined(__cplusplus)
 }
+#endif
+
 #endif

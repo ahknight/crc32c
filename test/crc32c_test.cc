@@ -5,7 +5,7 @@
 #include <cassert>
 #include <cstdio>
 
-#include "logging/crc32c.h"
+#include "crc32c/crc32c.h"
 #include "test/stupidunit.h"
 
 using namespace logging;
