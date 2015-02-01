@@ -18,6 +18,21 @@ static uint32_t crc32c_CPUDetection(uint32_t crc, const void* data, size_t lengt
 
 CRC32CFunctionPtr crc32c = crc32c_CPUDetection;
 
+// Use the compiler's cpuid, if it exists.
+#if (defined __GNUC__) || (defined __clang__)
+#include <cpuid.h>
+
+static uint32_t cpuid(uint32_t functionInput) {
+  uint32_t eax;
+  uint32_t ebx;
+  uint32_t ecx;
+  uint32_t edx;
+  __cpuid(functionInput, eax, ebx, ecx, edx);
+  return ecx;
+}
+
+#else
+// Basic implementation.  Seems to only cover x86, not x64.
 static uint32_t cpuid(uint32_t functionInput) {
     uint32_t eax;
     uint32_t ebx;
@@ -26,16 +41,16 @@ static uint32_t cpuid(uint32_t functionInput) {
 #ifdef __PIC__
     // PIC: Need to save and restore ebx See:
     // http://sam.zoy.org/blog/2007-04-13-shlib-with-non-pic-code-have-inline-assembly-and-pic-mix-well
-    asm("pushl %%ebx\n\t" /* save %ebx */
-        "cpuid\n\t"
-        "movl %%ebx, %[ebx]\n\t" /* save what cpuid just put in %ebx */
-        "popl %%ebx" : "=a"(eax), [ebx] "=r"(ebx), "=c"(ecx), "=d"(edx) : "a" (functionInput)
-        : "cc");
+    __asm__("pushl %%ebx\n\t" /* save %ebx */
+            "cpuid\n\t"
+            "movl %%ebx, %[ebx]\n\t" /* save what cpuid just put in %ebx */
+            "popl %%ebx" : "=a"(eax), [ebx] "=r"(ebx), "=c"(ecx), "=d"(edx) : "a" (functionInput) : "cc");
 #else
-    asm("cpuid" : "=a" (eax), "=b" (ebx), "=c" (ecx), "=d" (edx) : "a" (functionInput));
+    __asm__("cpuid" : "=a" (eax), "=b" (ebx), "=c" (ecx), "=d" (edx) : "a" (functionInput));
 #endif
     return ecx;
 }
+#endif
 
 CRC32CFunctionPtr detectBestCRC32C() {
     static const int SSE42_BIT = 20;
