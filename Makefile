@@ -5,13 +5,13 @@ PRODUCTS=crc32c_test crc32c_bench c_test
 
 all: $(PRODUCTS)
 
-crc32c_test: test/crc32c_test.o test/stupidunit.o logging/crc32c_tables.o logging/crc32c.o
+crc32c_test: tests/crc32c_test.o tests/stupidunit.o tests/crc32c_tables.o tests/crc32c.o
 	c++ -o $@ $^
 
-crc32c_bench: bench/crc32c_bench.o logging/crc32c_tables.o logging/crc32c.o
+crc32c_bench: tests/crc32c_bench.o tests/crc32c_tables.o tests/crc32c.o
 	c++ -o $@ $^
 
-c_test: main.o crc32c/crc32c.o crc32c/crc32c_tables.o
+c_test: tests/c_test.o crc32c.o crc32c_tables.o
 	$(CC) -o $@ $^
 
 clean:

@@ -1,8 +1,8 @@
 #include <cassert>
 #include <cstdio>
 
-#include "crc32c/crc32c.h"
-#include "bench/cycletimer.h"
+#include "crc32c.h"
+#include "tests/cycletimer.h"
 
 using namespace logging;
 

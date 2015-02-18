@@ -16,10 +16,10 @@
  *  Tables for software CRC generation
  */
 
-#include "crc32c/crc32c_tables.h"
+#include "crc32c_tables.h"
 
 namespace logging {
 
-#include "crc32c/crc32c_tables.c"
+#include "crc32c_tables.c"
 
 }  // namespace logging

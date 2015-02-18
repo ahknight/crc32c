@@ -5,8 +5,8 @@
 #include <cassert>
 #include <cstdio>
 
-#include "crc32c/crc32c.h"
-#include "test/stupidunit.h"
+#include "crc32c.h"
+#include "tests/stupidunit.h"
 
 using namespace logging;
 
@@ -122,7 +122,7 @@ TEST(CRC32C, Alignment) {
         char* end = ALIGNED_BLOCK;
         if (aligned) end += ALIGNMENT_SIZE;
         end += trailing;
-        //~ printf("start: %p end: %p; %d bytes\n", start, end, end - start);
+        //~ printf("start: (%p) end: (%p); %d bytes\n", start, end, end - start);
 
         uint32_t crc = 0;
         for (int j = 0; j < NUM_VALID_FUNCTIONS; ++j) {

@@ -1,5 +1,5 @@
 //
-//  main.c
+//  c_test.c
 //  crc32c
 //
 //  Created by Adam Knight on 11/19/13.
@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "crc32c/crc32c.h"
+#include "crc32c.h"
 
 uint32_t crc32c_oneshot(const void* base, uint32_t length)
 {
@@ -44,10 +44,11 @@ int main (int argc, const char * argv[])
     crc = crc32c_oneshot(NUMBERS, 10);
     if (crc != 0xf3dbd4fe)
         printf("(NUMBERS, 10) Expected %#x; got %#x\n", 0xf3dbd4fe, crc);
-        
-    crc = crc32c_oneshot(PHRASE, sizeof(PHRASE-1));
+    
+    size_t len_s = strlen(PHRASE);
+    crc = crc32c_oneshot(PHRASE, len_s);
     if (crc != 0x22620404)
-        printf("(PHRASE, sizeof(PHRASE-1)) Expected %#x; got %#x\n", 0x22620404, crc);
+        printf("(PHRASE, %zu) Expected %#x; got %#x\n", len_s, 0x22620404, crc);
     
     return 0;
 }

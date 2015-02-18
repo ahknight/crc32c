@@ -5,7 +5,7 @@
 // A stupid and simple unit test framework for C++ code.
 // Evan Jones <ej@evanjones.ca>
 
-#include "test/stupidunit.h"
+#include "tests/stupidunit.h"
 
 #include <dirent.h>
 #include <errno.h>
@@ -20,7 +20,7 @@
 #include <cstring>
 #include <sstream>
 
-#include "test/assert.h"
+#include "tests/assert.h"
 
 using std::string;
 
