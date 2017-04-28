@@ -13,5 +13,5 @@ script:
   - make all
   - ./c_test
   - ./crc32c_test
-  - ./crc32_bench
+  - ./crc32c_bench
 
