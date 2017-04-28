@@ -1,5 +1,6 @@
-CFLAGS = -O3 -DNDEBUG -msse4.2 -I. -Wall -Wextra -Wno-sign-compare
-CXXFLAGS = $(CFLAGS)
+FLAGS = -O3 -DNDEBUG -msse4.2 -I. -Wall -Wextra -Wno-sign-compare
+CFLAGS = $(FLAGS) -std=c99
+CXXFLAGS = $(FLAGS)
 
 PRODUCTS=crc32c_test crc32c_bench c_test
 
