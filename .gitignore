@@ -3,3 +3,6 @@ syntax: glob
 *.o
 xcuserdata
 
+/crc32c_test
+/c_test
+/crc32c_bench

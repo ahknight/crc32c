@@ -1,0 +1,17 @@
+language: c
+compiler:
+  - gcc
+  - clang
+branches:
+  only:
+    - master
+    - develop
+notifications:
+  email:
+    - adam@movq.us
+script:
+  - make all
+  - ./c_test
+  - ./crc32c_test
+  - ./crc32_bench
+
